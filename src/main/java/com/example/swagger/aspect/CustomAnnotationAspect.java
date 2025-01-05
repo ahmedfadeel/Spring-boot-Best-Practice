@@ -15,6 +15,8 @@ public class CustomAnnotationAspect {
         System.out.println(joinPoint.getSignature().getDeclaringTypeName() +
                 "." + joinPoint.getSignature().getName());
 
+
+
     }
 
 
