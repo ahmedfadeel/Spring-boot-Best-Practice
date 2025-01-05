@@ -1,0 +1,21 @@
+
+server:
+  port: 8002
+  servlet:
+    context-path: /swagger
+spring:
+  datasource:
+    username: root
+    password: mysql
+    url: jdbc:mysql://localhost:3306/Students?allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        show_sql: true
+        format_sql: true
+        ddl-auto: update
+    show-sql: true
+
+topic: testDockerYml
