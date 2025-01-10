@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class AuthorService {
-    @Autowired
-    private AuthorRepository authorRepository;
+
+    private final  AuthorRepository authorRepository;
+
+    public AuthorService ( AuthorRepository authorRepository ) {
+        this.authorRepository=authorRepository;
+    }
 
 
     public void save() {

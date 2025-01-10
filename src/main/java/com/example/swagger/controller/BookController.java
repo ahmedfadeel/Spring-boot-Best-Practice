@@ -6,16 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("api/v1/books")
 public class BookController {
-
-   @Autowired
-   private BookService bookService;
-
-    @Autowired
-    private AuthorService authorService;
-
-
 
 
 

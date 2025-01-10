@@ -19,10 +19,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
-    @Autowired
-    private StudentRepository studentRepository;
-    @Autowired
-    CourseMapper courseMapper;
+
+    private  final StudentRepository studentRepository;
+
+    private  final CourseMapper courseMapper;
+
+    public StudentService ( StudentRepository studentRepository, CourseMapper courseMapper ) {
+        this.studentRepository=studentRepository;
+        this.courseMapper=courseMapper;
+    }
 
     @Cacheable(value="students"  )
     public List<StudentDto> getAllStudents() {

@@ -9,33 +9,36 @@ import io.swagger.v3.oas.annotations.headers.Header;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.persistence.Cacheable;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("students")
+@RequestMapping("api/v1/students")
 public class StudentController {
 
-    @Autowired
-    private StudentService studentService;
 
+    private final  StudentService studentService;
+    private final BookService bookService;
+    private final AuthorService authorService;
 
-    @Autowired
-    private BookService bookService;
+    public StudentController ( StudentService studentService, BookService bookService, AuthorService authorService ) {
+        this.studentService=studentService;
+        this.bookService=bookService;
+        this.authorService=authorService;
+    }
 
-    @Autowired
-    private AuthorService authorService;
 
     @Value("${topic}")
     private String topic;
+
 
     @GetMapping
     @Operation(summary = "Find all Students",

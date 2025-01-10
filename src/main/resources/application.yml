@@ -4,6 +4,7 @@ server:
   servlet:
     context-path: /swagger
 spring:
+
   datasource:
     username: root
     password: mysql
