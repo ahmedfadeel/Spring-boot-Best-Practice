@@ -45,7 +45,7 @@ public class StudentService {
     @CachePut(value = "products")
     public void addStudent(StudentDto studentDto) {
       Student student = new Student();
-      student.setName("ali");
+
 
       Course course1 = new Course();
       course1.setName("java1");

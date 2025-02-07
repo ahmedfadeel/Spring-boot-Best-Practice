@@ -15,8 +15,12 @@ public class Course {
 
     @ManyToMany
     private Set<Student> students = new HashSet<>();
+    public Course ( ) {
 
-
+    }
+    public Course ( String name ) {
+        this.name=name;
+    }
 
     public Integer getId() {
         return id;

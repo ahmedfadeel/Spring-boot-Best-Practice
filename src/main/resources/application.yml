@@ -4,7 +4,6 @@ server:
   servlet:
     context-path: /swagger
 spring:
-
   datasource:
     username: root
     password: mysql
@@ -17,7 +16,11 @@ spring:
         globally_quoted_identifiers: true
         show_sql: true
         format_sql: true
-        ddl-auto: validate
+        ddl-auto: update
     show-sql: true
 
-topic: testYml
+
+  graphql:
+    graphiql:
+      enabled: true
+

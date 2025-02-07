@@ -14,7 +14,7 @@ public class Student {
     private String name;
     private int age;
 
-
+     @ManyToMany
     public Set<Course> getCourses() {
         return courses;
     }

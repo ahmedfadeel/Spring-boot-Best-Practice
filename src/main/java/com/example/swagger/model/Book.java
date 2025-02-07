@@ -1,6 +1,10 @@
 package com.example.swagger.model;
 
+import graphql.com.google.common.base.Optional;
 import jakarta.persistence.*;
+import org.hibernate.annotations.BatchSize;
+
+import java.util.Set;
 
 @Entity
 @Table(name="books")
@@ -10,9 +14,31 @@ public class Book {
     private Integer id;
 
     private String name;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="author_id")
     private Author author;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="book_category",
+            joinColumns ={ @JoinColumn(name="book_id")},
+            inverseJoinColumns = {@JoinColumn(name="category_id")})
+    @BatchSize(size = 10)
+    private Set <Category> categories;
+
+    @OneToMany(mappedBy =  "book", fetch = FetchType.LAZY
+            ,   cascade = CascadeType.ALL)
+    @BatchSize(size = 10)
+    private  Set<BookChilds> bookChilds;
+
+
+    public Set < Category > getCategories ( ) {
+        return categories;
+    }
+
+    public void setCategories ( Set < Category > categories ) {
+        this.categories = categories;
+    }
 
     public Author getAuthor() {
         return author;
@@ -38,6 +64,14 @@ public class Book {
         return name;
     }
 
+    public Set < BookChilds > getBookChilds ( ) {
+        return bookChilds;
+    }
+
+    public void setBookChilds ( Set < BookChilds > bookChilds ) {
+        this.bookChilds = bookChilds;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -47,6 +81,6 @@ public class Book {
     }
     @Override
     public int hashCode() {
-        return this.name.hashCode();
+        return this.id.hashCode ( );
     }
 }

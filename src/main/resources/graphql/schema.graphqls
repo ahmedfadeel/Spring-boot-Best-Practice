@@ -1,0 +1,14 @@
+type Book {
+    id: ID!
+    name: String!
+}
+type BookRequest {
+    name: String!
+}
+
+type Query {
+    allBooks: [Book]
+    bookById(id: ID!): Book
+}
+
+

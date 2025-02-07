@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class CustomAnnotationAspect {
+public class CustomAnnotationAspect  {
 
     @Before("@annotation(annotation)")
     public void before(JoinPoint joinPoint , CustomAnnotation annotation) {
